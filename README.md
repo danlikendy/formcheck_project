@@ -1,6 +1,4 @@
-# AI для спортивной аналитики
-
-Система прогнозирования спортивных травм и анализа формы на основе биометрии и истории повреждений
+# AI-ассистент для прогнозирования спортивных травм
 
 ## Возможности
 
@@ -8,45 +6,41 @@
 - Визуализация зависимости травм от рейтингов и показателей
 - Персональные рекомендации по тренировкам и восстановлению
 - Использование ML-моделей (RandomForest / XGBoost)
-- Расширяемая архитектура: API, веб-интерфейс, Telegram-бот
+- Веб-интерфейс на Streamlit и полноценный API (FastAPI)
+- Готовая контейнеризация с использованием Docker и Docker Compose
 
 ## Стек технологий
 
 - **Python 3.10+**
-- `pandas`, `xgboost`, `scikit-learn`, `seaborn`, `matplotlib`, `Streamlit`
+- `pandas`, `xgboost`, `scikit-learn`, `seaborn`, `matplotlib`, `Streamlit`, `FastAPI`, `Docker`
 
 ## Структура проекта
 
 ```
 FormCheck/
 │
-├── app/                   
-│   └── api/                     ← Backend-интерфейс (будущее)
-│
-├── notebooks/
-│   └── form_check.ipynb         ← ML-анализ и визуализации (в основной директории)
-│
-├── models/
-│   └── rf_model.pkl             ← обученная модель (будущее)
+├── apps/                   
+│   ├── main.py               ← API (FastAPI)
+│   ├── streamlit_app.py      ← Веб-интерфейс (Streamlit)
+│   └── dockerfile            ← Docker для API и Streamlit
 │
 ├── data/
-│   └── formscan_data.csv        ← исходные данные (в основной директории)
+│   └── formcheck_data.csv    ← Исходные данные
 │
-├── docs/
-│   └── Статья.docx              ← научная публикация
+├── docks/
+│   ├── Empathy map.png       ← API (FastAPI)
+│   ├── UX Persona.png        ← Веб-интерфейс (Streamlit)
+│   └── Статья ВАК            ← Docker для API и Streamlit
+│
+├── models/
+│   └── rf_model.pkl          ← Обученная модель
 │
 ├── requirements.txt
-├── README.md
-└── .gitignore
+├── docker-compose.yml
+└── README.md
 ```
 
-## Описание
-
-- `form_check.ipynb`: анализ данных, построение моделей и визуализация зависимости травм от показателей игроков
-- `formscan_data.csv`: данные о травмах, восстановлении и рейтингах игроков
-- `rf_model.pkl`: обученная модель прогнозирования снижения формы
-
-## Установка
+## Установка и запуск
 
 ```bash
 git clone https://github.com/danlikendy/formcheck_project.git
@@ -54,19 +48,23 @@ cd formcheck_project
 pip install -r requirements.txt
 ```
 
-## Запуск ноутбука
+### Запуск API (FastAPI)
 
 ```bash
-cd notebooks
-jupyter notebook form_check.ipynb
+uvicorn apps.main:app --reload
 ```
 
-## Будущее развитие
+### Запуск Streamlit-интерфейса
 
-- Streamlit-интерфейс для оценки формы игрока
-- Telegram-бот с индивидуальными рекомендациями
-- Интеграция с Google Fit, Garmin, Strava и Apple Health
-- Генерация тренировочных планов на основе состояния
+```bash
+streamlit run apps/streamlit_app.py
+```
+
+### Запуск через Docker Compose (API и Streamlit вместе)
+
+```bash
+docker-compose up --build
+```
 
 ## Приватность
 
