@@ -66,12 +66,6 @@ streamlit run apps/streamlit_app.py
 docker-compose up --build
 ```
 
-## Приватность
-
-- Биометрия и оценки остаются локально
-- Можно развернуть полностью оффлайн
-- Возможность очистки логов, моделей и предсказаний
-
 ## Автор
 
 Цыганцов Артём Сергеевич — [danlikendy](https://github.com/danlikendy)
