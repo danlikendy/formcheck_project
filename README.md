@@ -47,7 +47,7 @@ cd formcheck_project
 pip install -r requirements.txt
 ```
 
-### Запуск API (FastAPI)
+### Запуск API
 
 ```bash
 uvicorn apps.main:app --reload
